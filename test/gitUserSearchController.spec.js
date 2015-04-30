@@ -16,24 +16,19 @@ describe('GitUserSearchController', function(){
 
   describe('when searching for a user', function() {
 
-
-    beforeEach(inject(function(SearchHelpers){
+    beforeEach(inject(function(SearchHelpers, _$httpBackend_){
       items = SearchHelpers.items;
+      httpBackend = _$httpBackend_;
+      httpBackend.whenGET("https://api.github.com/search/users?access_token=7458b50664a5209ab61c80fc7b3b86c494f3226c&q=hello")
+        .respond([{
+          items: items
+        }]);
     }))
 
     afterEach(function(){
       httpBackend.verifyNoOutstandingExpectation();
       httpBackend.verifyNoOutstandingRequest();
     });
-
-    beforeEach(inject(function($httpBackend) {
-      httpBackend = $httpBackend
-      httpBackend
-        .expectGET("https://api.github.com/search/users?access_token=7458b50664a5209ab61c80fc7b3b86c494f3226c&q=hello")
-        .respond(
-        { items: items }
-      );
-    }));
 
     it('displays search results', function() {
       ctrl.searchTerm = 'hello';
