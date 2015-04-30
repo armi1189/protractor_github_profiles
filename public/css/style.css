@@ -1,0 +1,24 @@
+.search-bar {
+  width: 250px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.search-bar input {
+  height: 30px;
+  border-radius: 5px;
+  outline: transparent;
+}
+
+.search-results {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.search-results ul {
+  list-style-type: none;
+}
+
+.search-results img {
+  border-radius: 25px;
+}
